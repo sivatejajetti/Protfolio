@@ -11,7 +11,7 @@ This repository contains a component-driven portfolio site featuring project hig
 - Component-based architecture with reusable UI building blocks
 - Animated, accessible, and mobile-first design using Tailwind CSS + Framer Motion
 - Pages for Projects, Skills, Education, and Contact
-- Easy to customize: add or replace projects in `src/components/portfolio/`
+- Easy to customize: add  hb or replace projects in `src/components/portfolio/`
 
 ## Tech Stack
 
