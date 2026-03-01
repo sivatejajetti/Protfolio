@@ -1,17 +1,13 @@
 import { motion } from "framer-motion";
+import { Code, Bot, Palette, Languages, Database } from "lucide-react";
 
 const skills = [
-  { name: "Java", level: 55 },
-  { name: "C", level: 60 },
-  { name: "Python", level: 55 },
-  { name: "HTML", level: 50 },
-  { name: "CSS", level: 30 },
-  
-];
-
-const technologies = [
-  "C","Java","Python","HTML","CSS"
-  
+  { name: "Java", level: 55, icon: Languages },
+  { name: "C", level: 60, icon: Code },
+  { name: "Python", level: 55, icon: Bot },
+  { name: "HTML", level: 50, icon: Code },
+  { name: "CSS", level: 30, icon: Palette },
+  { name: "SQL", level: 40, icon: Database },
 ];
 
 const Skills = () => {
@@ -35,7 +31,7 @@ const Skills = () => {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Skill Bars */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -71,7 +67,7 @@ const Skills = () => {
             ))}
           </motion.div>
 
-          {/* Tech Tags */}
+          {/* Tech Icons */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -79,18 +75,20 @@ const Skills = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-xl font-semibold mb-6">Technologies I Work With</h3>
-            <div className="flex flex-wrap gap-3">
-              {technologies.map((tech, index) => (
-                <motion.span
-                  key={tech}
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-4">
+              {skills.map((skill, index) => (
+                <motion.div
+                  key={skill.name}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.03 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  whileHover={{ scale: 1.1, y: -5 }}
                   viewport={{ once: true }}
-                  className="code-font text-sm px-4 py-2 glass-card rounded-lg hover-glow cursor-default"
+                  className="glass-card rounded-xl p-4 flex flex-col items-center justify-center gap-2 hover-glow cursor-default aspect-square"
                 >
-                  {tech}
-                </motion.span>
+                  <skill.icon className="w-10 h-10 text-primary" />
+                  <span className="code-font text-sm text-center">{skill.name}</span>
+                </motion.div>
               ))}
             </div>
           </motion.div>

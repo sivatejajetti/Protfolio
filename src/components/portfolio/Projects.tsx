@@ -1,56 +1,89 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, Folder } from "lucide-react";
+import { ExternalLink, Github, Folder, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ProjectModal from "./ProjectModal";
 
-const projects = [
+export type Project = {
+  title: string;
+  description: string;
+  longDescription: string;
+  tech: string[];
+  github?: string;
+  live?: string;
+  image: string;
+  featured: boolean;
+};
+
+const projects: Project[] = [
   {
     title: "E-Commerce Platform",
-    description: "A full-stack e-commerce application with user authentication, product management, cart functionality, and payment integration.",
-    tech: ["React", "Node.js", "MongoDB", "Stripe"],
+    description: "A full-stack e-commerce application with user authentication, product management, and payment integration.",
+    longDescription: "This project is a complete e-commerce solution featuring a customer-facing storefront and an admin dashboard for managing products, orders, and users. It includes secure payment processing with Stripe and is built on a scalable MERN stack.",
+    tech: ["React", "Node.js", "MongoDB", "Stripe", "Express"],
     github: "https://github.com",
     live: "https://example.com",
+    image: "/placeholder.svg",
     featured: true,
   },
   {
     title: "Task Management App",
-    description: "A collaborative task management tool with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "Socket.io"],
+    description: "A collaborative task management tool with real-time updates and drag-and-drop functionality.",
+    longDescription: "Inspired by Trello, this app allows teams to manage their workflows in real-time. It features a drag-and-drop interface for tasks, boards, and lists, with updates synced across all clients using Socket.io.",
+    tech: ["Next.js", "TypeScript", "PostgreSQL", "Socket.io", "Prisma"],
     github: "https://github.com",
     live: "https://example.com",
+    image: "/placeholder.svg",
     featured: true,
   },
   {
     title: "AI Image Generator",
     description: "An AI-powered image generation tool using OpenAI's DALL-E API with a sleek user interface.",
-    tech: ["React", "Python", "Flask", "OpenAI API"],
+    longDescription: "This tool provides a user-friendly interface for generating images from text prompts using the DALL-E API. The backend is built with Python/Flask, and the frontend is a responsive React application.",
+    tech: ["React", "Python", "Flask", "OpenAI API", "Tailwind CSS"],
     github: "https://github.com",
     live: "https://example.com",
+    image: "/placeholder.svg",
     featured: true,
   },
   {
     title: "Portfolio Website",
     description: "Personal portfolio website built with modern technologies and animations.",
+    longDescription: "My personal portfolio, the one you're looking at right now! It's built with Vite, React, and TypeScript, styled with Tailwind CSS, and animated with Framer Motion.",
     tech: ["React", "TypeScript", "Tailwind", "Framer Motion"],
     github: "https://github.com",
+    image: "/placeholder.svg",
     featured: false,
   },
   {
     title: "Weather Dashboard",
     description: "A weather dashboard with location-based forecasts and interactive charts.",
+    longDescription: "A simple but elegant weather dashboard that fetches data from a third-party weather API. It displays current weather, a 5-day forecast, and uses Chart.js for visualizing temperature trends.",
     tech: ["React", "Chart.js", "Weather API"],
     github: "https://github.com",
+    image: "/placeholder.svg",
     featured: false,
   },
   {
     title: "Chat Application",
     description: "Real-time chat application with private messaging and group chat features.",
+    longDescription: "A full-featured chat application enabling users to communicate in real-time. It supports private (one-to-one) messaging and public group channels. Built with Node.js and Socket.io.",
     tech: ["React", "Node.js", "Socket.io", "MongoDB"],
     github: "https://github.com",
+    image: "/placeholder.svg",
     featured: false,
   },
 ];
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
   const featuredProjects = projects.filter(p => p.featured);
   const otherProjects = projects.filter(p => !p.featured);
 
@@ -100,7 +133,15 @@ const Projects = () => {
                     ))}
                   </div>
                 </div>
-                <div className="flex gap-4">
+                <div className="flex gap-4 items-center">
+                  <Button
+                    variant="outline"
+                    className="hidden md:flex"
+                    onClick={() => openModal(project)}
+                  >
+                    <Eye className="w-4 h-4 mr-2" />
+                    View Project
+                  </Button>
                   <Button
                     variant="ghost"
                     size="icon"
@@ -147,25 +188,30 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="glass-card rounded-xl p-6 hover-glow group flex flex-col h-full"
+              className="glass-card rounded-xl p-6 hover-glow group flex flex-col h-full cursor-pointer"
+              onClick={() => openModal(project)}
             >
               <div className="flex items-center justify-between mb-4">
                 <Folder className="w-10 h-10 text-primary" />
                 <div className="flex gap-3">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors z-10"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Github className="w-5 h-5" />
+                    </a>
+                  )}
                   {project.live && (
                     <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-muted-foreground hover:text-primary transition-colors z-10"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <ExternalLink className="w-5 h-5" />
                     </a>
@@ -187,6 +233,12 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onOpenChange={setIsModalOpen}
+      />
     </section>
   );
 };
