@@ -34,7 +34,7 @@ const Navbar = () => {
     >
       <div className="container px-6 flex items-center justify-between">
         <a href="#" className="text-2xl font-bold gradient-text">
-          YN
+          TJ
         </a>
 
         {/* Desktop Menu */}

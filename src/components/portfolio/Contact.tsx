@@ -1,24 +1,7 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send, Github, Linkedin, Twitter, Instagram, MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
-import { toast } from "sonner";
+import { Mail, MapPin, Github, Linkedin, Twitter, Instagram, MessageCircle } from "lucide-react";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Message sent! I'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
-  };
-
   return (
     <section id="contact" className="py-24 relative">
       <div className="container px-6">
@@ -40,143 +23,87 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <div className="glass-card rounded-xl p-6 hover-glow flex items-center gap-4">
+        <div className="max-w-3xl mx-auto space-y-8">
+          <div className="grid md:grid-cols-2 gap-6">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="glass-card rounded-xl p-6 hover-glow flex items-center gap-4"
+            >
               <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
                 <Mail className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <h3 className="font-semibold">Email</h3>
-                <a href="mailto:lova0443@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                  lova0443@gmail.com
+                <a href="mailto:sivatejajetti@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                  sivatejajetti@gmail.com
                 </a>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="glass-card rounded-xl p-6 hover-glow flex items-center gap-4">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="glass-card rounded-xl p-6 hover-glow flex items-center gap-4"
+            >
               <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
                 <MapPin className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <h3 className="font-semibold">Location</h3>
-                <p className="text-muted-foreground">Kakinada, Andhra Pradesh, India</p>
+                <p className="text-muted-foreground">Peddapuram, Kakinada-Dist, Andhra Pradesh, India</p>
               </div>
-            </div>
+            </motion.div>
+          </div>
 
-            <div className="glass-card rounded-xl p-6 hover-glow">
-              <h3 className="font-semibold mb-4">Follow Me</h3>
-              <div className="flex gap-4">
-                <a
-                  href="https://github.com/mrsivateja"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-all"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://linkedin.com/teja-jetti-970158353"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-all"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-all"
-                >
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://instagram.com/t3ja_j"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-all"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a
-                  href="https://wa.me/9491256991"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-all"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.form
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            onSubmit={handleSubmit}
-            className="glass-card rounded-2xl p-8 hover-glow space-y-6"
+            className="glass-card rounded-xl p-6 hover-glow text-center"
           >
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-2">
-                Name
-              </label>
-              <Input
-                id="name"
-                type="text"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-secondary border-border focus:border-primary"
-                required
-              />
+            <h3 className="font-semibold mb-6">Follow Me</h3>
+            <div className="flex justify-center gap-4 flex-wrap">
+              <a
+                href="https://github.com/sivatejajetti"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-all"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+              <a
+                href="https://linkedin.com/teja-jetti-970158353"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-all"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              
+              <a
+                href="https://instagram.com/t3ja_j"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-all"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://wa.me/9491256991"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/20 transition-all"
+              >
+                <MessageCircle className="w-5 h-5" />
+              </a>
             </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
-                Email
-              </label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="your@email.com"
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="bg-secondary border-border focus:border-primary"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-2">
-                Message
-              </label>
-              <Textarea
-                id="message"
-                placeholder="Your message..."
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                className="bg-secondary border-border focus:border-primary min-h-32"
-                required
-              />
-            </div>
-            <Button
-              type="submit"
-              size="lg"
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 glow-effect"
-            >
-              <Send className="w-4 h-4 mr-2" />
-              Send Message
-            </Button>
-          </motion.form>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -184,3 +111,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

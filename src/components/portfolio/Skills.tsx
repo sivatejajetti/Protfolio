@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Code, Bot, Palette, Languages, Database } from "lucide-react";
+import { Code, Bot, Palette, Languages, Database, Smartphone, Video } from "lucide-react";
 
 const skills = [
   { name: "Java", level: 55, icon: Languages },
@@ -7,8 +7,11 @@ const skills = [
   { name: "Python", level: 55, icon: Bot },
   { name: "HTML", level: 50, icon: Code },
   { name: "CSS", level: 30, icon: Palette },
-  { name: "SQL", level: 40, icon: Database },
+  { name: "SQL", level: 30, icon: Database },
+  { name: "Android Studio", level: 20, icon: Smartphone },
+  { name: "Motion Graphics / Video Editing", level: 80, icon: Video },
 ];
+
 
 const Skills = () => {
   return (

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { Github, Linkedin, Mail, ChevronDown, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Hero = () => {
@@ -62,9 +62,10 @@ const Hero = () => {
             size="lg"
             variant="outline"
             className="border-primary/50 text-foreground hover:bg-primary/10 hover:border-primary"
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={() => window.open("/resume.pdf", "_blank")}
           >
-            Get In Touch
+            <FileText className="w-4 h-4 mr-2" />
+            Resume
           </Button>
         </motion.div>
 
@@ -75,7 +76,7 @@ const Hero = () => {
           className="flex gap-6 justify-center"
         >
           <a
-            href="https://github.com/mrsivateja"
+            href="https://github.com/sivatejajetti"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"
@@ -91,13 +92,15 @@ const Hero = () => {
             <Linkedin className="w-6 h-6" />
           </a>
           <a
-            href="mailto:your@email.com"
+            href="mailto:sivatejajetti@gmail.com"
             className="text-muted-foreground hover:text-primary transition-colors"
           >
             <Mail className="w-6 h-6" />
           </a>
         </motion.div>
       </div>
+
+
 
       {/* Scroll indicator */}
       <motion.div

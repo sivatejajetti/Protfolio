@@ -17,25 +17,26 @@ export type Project = {
 
 const projects: Project[] = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce application with user authentication, product management, and payment integration.",
-    longDescription: "This project is a complete e-commerce solution featuring a customer-facing storefront and an admin dashboard for managing products, orders, and users. It includes secure payment processing with Stripe and is built on a scalable MERN stack.",
-    tech: ["React", "Node.js", "MongoDB", "Stripe", "Express"],
-    github: "https://github.com",
-    live: "https://example.com",
-    image: "/placeholder.svg",
+    title: "Vital Me - Personal fitness tracker that can connect with your wearables",
+    description: "How is it different from other health trackers ? - See how it works (Fully deployed)--->",
+    longDescription: "Google fit data transfer, AI analytics, AI pushup counter, Task manager, sleep tracker, AI chatbot for health",
+    tech: ["React", "Node.js", "MongoDB", "Google AUTH", "Google Fitness API"],
+    github: "https://github.com/mrsivateja/VitalMe",
+    live: "https://vitalme.vercel.app",
+    image: "/vitalme.png",
     featured: true,
   },
   {
-    title: "Task Management App",
-    description: "A collaborative task management tool with real-time updates and drag-and-drop functionality.",
-    longDescription: "Inspired by Trello, this app allows teams to manage their workflows in real-time. It features a drag-and-drop interface for tasks, boards, and lists, with updates synced across all clients using Socket.io.",
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "Socket.io", "Prisma"],
-    github: "https://github.com",
-    live: "https://example.com",
-    image: "/placeholder.svg",
+    title: "College Management System (college360)",
+    description: "AI-Powered University ERP with Geofenced Attendance & Real-time Analytics.-Team project",
+    longDescription: "College360 is a modern, full-stack ERP solution designed to automate university operations using advanced AI (Gemini Pro) and real-time data analytics. Features include RBAC (Admin/Student roles), geofencing-verified attendance, automated ID generation, an intelligent campus assistant, and an academic resource hub. The system uses a sleek Glassmorphism UI and a robust Node.js/SQLite backend.",
+    tech: ["React", "Node.js", "SQLite3", "Gemini AI", "Framer Motion", "Recharts"],
+    github: "https://github.com/sandeep2409-gitch/college360",
+   
+    image: "/college360.png",
     featured: true,
   },
+
   {
     title: "AI Image Generator",
     description: "An AI-powered image generation tool using OpenAI's DALL-E API with a sleek user interface.",
