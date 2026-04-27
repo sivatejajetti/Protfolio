@@ -38,42 +38,27 @@ const projects: Project[] = [
   },
 
   {
-    title: "AI Image Generator",
-    description: "An AI-powered image generation tool using OpenAI's DALL-E API with a sleek user interface.",
-    longDescription: "This tool provides a user-friendly interface for generating images from text prompts using the DALL-E API. The backend is built with Python/Flask, and the frontend is a responsive React application.",
-    tech: ["React", "Python", "Flask", "OpenAI API", "Tailwind CSS"],
-    github: "https://github.com",
-    live: "https://example.com",
-    image: "/placeholder.svg",
+    title: "Farm Direct - D2C Agriculture Platform",
+    description: "Modern D2C app for farmers featuring AI crop grading, KisanGPT, and voice commands.",
+    longDescription: "Farm Direct is a sophisticated Next.js 15 application designed to empower farmers. It includes an AI-powered KisanGPT assistant (NVIDIA NIM), real-time crop detection/grading via YOLO11, voice-enabled commands, and a secure local SQLite database. The platform features Next.js 15 App Router, React 19, and OTP-based authentication.",
+    tech: ["Next.js 15", "React 19", "NVIDIA NIM", "YOLO11", "SQLite", "Tailwind CSS"],
+    github: "https://github.com/sivatejajetti/FarmDirect",
+    live: "https://tejafarmdirect.vercel.app",
+    image: "/farmdirect.png",
     featured: true,
   },
-  {
+{
     title: "Portfolio Website",
     description: "Personal portfolio website built with modern technologies and animations.",
     longDescription: "My personal portfolio, the one you're looking at right now! It's built with Vite, React, and TypeScript, styled with Tailwind CSS, and animated with Framer Motion.",
     tech: ["React", "TypeScript", "Tailwind", "Framer Motion"],
-    github: "https://github.com",
+    github: "https://github.com/sivatejajetti/protfolio",
     image: "/placeholder.svg",
+    live: "https://tejajetti.vercel.app",
+
     featured: false,
   },
-  {
-    title: "Weather Dashboard",
-    description: "A weather dashboard with location-based forecasts and interactive charts.",
-    longDescription: "A simple but elegant weather dashboard that fetches data from a third-party weather API. It displays current weather, a 5-day forecast, and uses Chart.js for visualizing temperature trends.",
-    tech: ["React", "Chart.js", "Weather API"],
-    github: "https://github.com",
-    image: "/placeholder.svg",
-    featured: false,
-  },
-  {
-    title: "Chat Application",
-    description: "Real-time chat application with private messaging and group chat features.",
-    longDescription: "A full-featured chat application enabling users to communicate in real-time. It supports private (one-to-one) messaging and public group channels. Built with Node.js and Socket.io.",
-    tech: ["React", "Node.js", "Socket.io", "MongoDB"],
-    github: "https://github.com",
-    image: "/placeholder.svg",
-    featured: false,
-  },
+
 ];
 
 const Projects = () => {
